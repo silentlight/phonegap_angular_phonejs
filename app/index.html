@@ -11,6 +11,13 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+        <!-- build:css styles/libs.css -->
+        <link rel="stylesheet" type="text/css" href="libs/phonejs/css/dx.common.css" />
+	    <link rel="stylesheet" type="text/css" href="libs/phonejs/css/dx.ios.default.css" />
+	    <link rel="stylesheet" type="text/css" href="libs/phonejs/css/dx.android.holo-dark.css" />
+	    <link rel="stylesheet" type="text/css" href="libs/phonejs/css/dx.generic.light.css" />
+        <!-- endbuild -->
+        
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
@@ -26,22 +33,30 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="dx-viewport dx-ios-stripes" ng-view=""></div>
 
+	<script src="libs/phonejs/js/jquery-2.0.3.js"></script>
+    <script src="libs/phonejs/js/globalize.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="libs/phonejs/js/dx.phonejs.js"></script>
 
-        <!-- build:js scripts/modules.js -->
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-touch/angular-touch.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbuild -->
 
-        <script src="cordova.js"></script>
-        
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/services/Cordova.js"></script>
-        <!-- endbuild -->
+    <script src="cordova.js"></script>
+    
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/path_to_insight.js"></script>
+    <script src="scripts/services/Cordova.js"></script>
+    <!-- endbuild -->
+    
+    <script>
+        DevExpress.devices.attachCss($(".dx-viewport"));
+    </script>
 </body>
 </html>

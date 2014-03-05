@@ -3,28 +3,54 @@ angular.module('chaiApp', [
   'ngResource',
   'ngRoute',
   'ngTouch',
-  'fsCordova'
+  'fsCordova',
+  'dx'
 ]).config([
   '$routeProvider',
   function ($routeProvider) {
     $routeProvider.when('/', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
+    }).when('/path-to-insight', {
+      templateUrl: 'views/path_to_insight.html',
+      controller: 'PathToInsightCtrl'
     }).otherwise({ redirectTo: '/' });
   }
 ]);
 'use strict';
 angular.module('chaiApp').controller('MainCtrl', [
   '$scope',
+  '$location',
   'CordovaService',
-  function ($scope, CordovaService) {
-    $scope.libs = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  function ($scope, $location, CordovaService) {
+    $scope.buttonOptions = {
+      text: 'Button',
+      clickAction: function () {
+        $location.path('/path-to-insight');
+      }
+    };
     CordovaService.ready.then(function () {
       $scope.libs.push('Cordova');
+    });
+  }
+]).$inject = [
+  '$scope',
+  '$location',
+  'CordovaService'
+];
+'use strict';
+angular.module('chaiApp').controller('PathToInsightCtrl', [
+  '$scope',
+  'CordovaService',
+  function ($scope, CordovaService) {
+    $scope.categories = [
+      { name: 'Relationships' },
+      { name: 'Self' },
+      { name: 'Mental/Emotional' },
+      { name: 'Money' },
+      { name: 'Wild' }
+    ];
+    CordovaService.ready.then(function () {
     });
   }
 ]);
